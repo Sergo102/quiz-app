@@ -2,14 +2,17 @@ const {src, dest, watch, series} = require('gulp');
 
 // scss
 const scss = require('gulp-sass')(require('sass'));
-const cssMinify = require('gulp-clean-css')
+const cssMinify = require('gulp-clean-css');
+const sourcemaps = require('gulp-sourcemaps')
 
 function styles(){
-  return src('styles/**/*.scss')
-    .pipe(scss())
-    .pipe(cssMinify())
+  return src('styles/**/index.scss')
+    .pipe(sourcemaps.init())
+      .pipe(scss())
+      .pipe(cssMinify())
+    .pipe(sourcemaps.write())
     .pipe(dest('dist/styles/'))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream())
 }
 
 // scripts
