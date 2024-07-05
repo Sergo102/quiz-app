@@ -1,11 +1,12 @@
-const questions = [
-  {
-    question: 'Inside which HTML element do we put the JavaScript?',
-    answerA: '<js>',
-    answerB: '<javascript>',
-    answerC: '<scripting>',
-    answerD: '<script>',
-    correctAnswer: '<script>',
+window.addEventListener('DOMContentLoaded', function(){
+  const questions = [
+    {
+      question: 'Inside which HTML element do we put the JavaScript?',
+      answerA: '&ltjs&gt',
+      answerB: '&ltjavascript&gt',
+      answerC: '&ltscripting&gt',
+    answerD: '&ltscript&gt',
+    correctAnswer: '&ltscript&gt',
   },
   {
     question: 'What is the correct JavaScript syntax to change the content of the HTML element below?',
@@ -17,11 +18,11 @@ const questions = [
   },
   {
     question: 'Where is the correct place to insert a JavaScript?',
-    answerA: 'The <footer>',
-    answerB: 'The <head> section',
-    answerC: 'The <body> sections',
-    answerD: 'Both the <head> and the <body> section are correct',
-    correctAnswer: 'Both sections the <head> and the <body> section are correct',
+    answerA: 'The &ltfooter&gt',
+    answerB: 'The &lthead&gt section',
+    answerC: 'The &ltbody&gt sections',
+    answerD: 'Both the &lthead&gt and the &ltbody&gt section are correct',
+    correctAnswer: 'Both sections the &lthead&gt and the &ltbody" section are correct',
   },
   {
     question: 'How do you create a function in JavaScript?',
@@ -41,7 +42,7 @@ const questions = [
   },
   {
     question: 'How can you add a comment in a JavaScript?',
-    answerA: '<!--This is a comment-->',
+    answerA: '&lt!--This is a comment--&gt',
     answerB: '//This is a comment',
     answerC: "'This is a comment",
     answerD: 'This is a comment',
@@ -81,12 +82,32 @@ const questions = [
   },
 ];
 
-const randomizedQuestions = [];
+  let randomizedQuestions = questions
+  .map(value => ({ value, sort: Math.random() }))
+  .sort((a, b) => a.sort - b.sort)
+  .map(({ value }) => value);
 
-const answeredQuestions = [];
+  console.log(randomizedQuestions)
 
-function changeQuestion(){}
 
-/* The part where you display question & answers */
+  let answeredQuestions = [];
 
-function showResults(){}
+  let h2 = document.querySelector('h2');
+  let answerA = document.querySelector("#answerA");
+  let answerB = document.querySelector("#answerB");
+  let answerC = document.querySelector("#answerC");
+  let answerD = document.querySelector("#answerD");
+
+  h2.innerText = randomizedQuestions[0].question;
+  answerA.innerHTML = `${randomizedQuestions[0].answerA} <input type='checkbox'>`;  
+  answerB.innerHTML = `${randomizedQuestions[0].answerB} <input type='checkbox'>`;
+  answerC.innerHTML = `${randomizedQuestions[0].answerC} <input type='checkbox'>`;
+  answerD.innerHTML = `${randomizedQuestions[0].answerD} <input type='checkbox'>`;
+
+  /* The part where you display question & answers */
+  function showAnswer(){};
+
+  function changeQuestion(){};
+
+  function showResults(){}
+})
