@@ -1,6 +1,5 @@
-window.addEventListener('DOMContentLoaded', function(){
-  const questions = [
-    {
+const questions = [
+{
       question: 'Inside which HTML element do we put the JavaScript?',
       answerA: '&ltjs&gt',
       answerB: '&ltjavascript&gt',
@@ -87,10 +86,8 @@ window.addEventListener('DOMContentLoaded', function(){
   .sort((a, b) => a.sort - b.sort)
   .map(({ value }) => value);
 
-  console.log(randomizedQuestions)
+  console.log(randomizedQuestions);
 
-
-  let answeredQuestions = [];
 
   let h2 = document.querySelector('h2');
   let answerA = document.querySelector("#answerA");
@@ -99,10 +96,21 @@ window.addEventListener('DOMContentLoaded', function(){
   let answerD = document.querySelector("#answerD");
 
   h2.innerText = randomizedQuestions[0].question;
-  answerA.innerHTML = `${randomizedQuestions[0].answerA} <input type='checkbox'>`;  
-  answerB.innerHTML = `${randomizedQuestions[0].answerB} <input type='checkbox'>`;
-  answerC.innerHTML = `${randomizedQuestions[0].answerC} <input type='checkbox'>`;
-  answerD.innerHTML = `${randomizedQuestions[0].answerD} <input type='checkbox'>`;
+  answerA.innerHTML = `${randomizedQuestions[0].answerA}`;  
+  answerB.innerHTML = `${randomizedQuestions[0].answerB}`;
+  answerC.innerHTML = `${randomizedQuestions[0].answerC}`;
+  answerD.innerHTML = `${randomizedQuestions[0].answerD}`;
+
+  let lis = document.querySelectorAll('li');
+  
+  function selectAnswer(n){
+    lis[n].className = 'selected';
+    for(let i = 0;i < lis.length;i++){
+      if(lis[i] !== lis[n]){
+        lis[i].className = '';
+      }
+    }
+  }
 
   /* The part where you display question & answers */
   function showAnswer(){};
@@ -110,4 +118,3 @@ window.addEventListener('DOMContentLoaded', function(){
   function changeQuestion(){};
 
   function showResults(){}
-})

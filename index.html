@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz app</title>
-  <script src="dist/scripts/app.js"></script>
   <link rel="stylesheet" href="dist/styles/index.css">
 </head>
 <body>
@@ -17,13 +16,14 @@
     </section>
     <section class="answers">
       <ul>
-        <li id="answerA"></li>
-        <li id="answerB"></li>
-        <li id="answerC"></li>
-        <li id="answerD"></li>
+        <li onclick="selectAnswer(0)" id="answerA"></li>
+        <li onclick="selectAnswer(1)" id="answerB"></li>
+        <li onclick="selectAnswer(2)" id="answerC"></li>
+        <li onclick="selectAnswer(3)" id="answerD"></li>
       </ul>
     </section>
     <button class="submit">Next ˃</button>
   </main>
+  <script src="dist/scripts/app.js"></script>
 </body>
 </html>
