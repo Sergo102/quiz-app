@@ -94,27 +94,71 @@ const questions = [
   let answerB = document.querySelector("#answerB");
   let answerC = document.querySelector("#answerC");
   let answerD = document.querySelector("#answerD");
-
-  h2.innerText = randomizedQuestions[0].question;
-  answerA.innerHTML = `${randomizedQuestions[0].answerA}`;  
-  answerB.innerHTML = `${randomizedQuestions[0].answerB}`;
-  answerC.innerHTML = `${randomizedQuestions[0].answerC}`;
-  answerD.innerHTML = `${randomizedQuestions[0].answerD}`;
-
+  
+  let number = 0;
+  
+  h2.innerText = randomizedQuestions[number].question;
+  answerA.innerHTML = `${randomizedQuestions[number].answerA}`;  
+  answerB.innerHTML = `${randomizedQuestions[number].answerB}`;
+  answerC.innerHTML = `${randomizedQuestions[number].answerC}`;
+  answerD.innerHTML = `${randomizedQuestions[number].answerD}`;
+  
   let lis = document.querySelectorAll('li');
   
-  function selectAnswer(n){
-    lis[n].className = 'selected';
+  function selectAnswer(option){
+    lis[option].className = 'selected';
     for(let i = 0;i < lis.length;i++){
-      if(lis[i] !== lis[n]){
+      if(lis[i] !== lis[option]){
         lis[i].className = '';
       }
     }
   }
-
+  
   /* The part where you display question & answers */
-  function showAnswer(){};
+  
+  function changeQuestion(){
+    for(let i = 0;i < lis.length;i++){
+      if(lis[i].classList.length > 0){
+        nextQuestion();
+        unselect();
+        return;
+      }
+    }
+    alert('Please choose an answer');
+  }
 
-  function changeQuestion(){};
+  function unselect(){
+    for(let i = 0;i < lis.length;i++){
+      lis[i].className = '';
+    }
+  }
+
+  function nextQuestion(){
+    if(number == 8){
+      document.querySelector('button').innerText = 'Submit ˃';
+      number += 1;
+      h2.innerText = randomizedQuestions[number].question;
+      answerA.innerHTML = `${randomizedQuestions[number].answerA}`;  
+      answerB.innerHTML = `${randomizedQuestions[number].answerB}`;
+      answerC.innerHTML = `${randomizedQuestions[number].answerC}`;
+      answerD.innerHTML = `${randomizedQuestions[number].answerD}`; 
+      return;
+    }else if(number < 9){
+      number += 1;
+      h2.innerText = randomizedQuestions[number].question;
+      answerA.innerHTML = `${randomizedQuestions[number].answerA}`;  
+      answerB.innerHTML = `${randomizedQuestions[number].answerB}`;
+      answerC.innerHTML = `${randomizedQuestions[number].answerC}`;
+      answerD.innerHTML = `${randomizedQuestions[number].answerD}`; 
+      return;
+    }else if(number == 9){
+      // The code lower won't change the question but is still needed
+      number++;
+    }else{
+      alert('Do you want to see your results');
+    }
+  };
+  
+  function showAnswer(){};
 
   function showResults(){}
